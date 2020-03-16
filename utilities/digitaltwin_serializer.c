@@ -558,7 +558,7 @@ bool Device_Detailed_Information_SerializeDeviceNameProperty(char * payloadBuffe
         snprintf(payloadBuffer, size, "\"%s\"", deviceName);
     }
 
-    //free(deviceName);
+    free(deviceName);
     return true;
 }
 
@@ -767,7 +767,7 @@ bool Device_Detailed_Information_SerializeManufacturerProperty(char * payloadBuf
         snprintf(payloadBuffer, size, "\"%s\"", manufacturer);
     }
 
-    //free(manufacturer);
+    free(manufacturer);
     return true;
 }
 
@@ -1028,7 +1028,7 @@ bool DeviceInfo_SerializeManufacturerProperty(char * payloadBuffer, int size)
         snprintf(payloadBuffer, size, "\"%s\"", manufacturer);
     }
 
-   // free(manufacturer);
+    free(manufacturer);
     return true;
 }
 
@@ -1055,7 +1055,7 @@ bool DeviceInfo_SerializeModelProperty(char * payloadBuffer, int size)
         snprintf(payloadBuffer, size, "\"%s\"", model);
     }
 
-    //free(model);
+    free(model);
     return true;
 }
 

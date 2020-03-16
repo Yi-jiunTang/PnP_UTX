@@ -52,11 +52,10 @@ void ReportProperty_Error_Callback(const char* interfaceName, const char* proper
 char* Device_Detailed_Information_Property_GetDeviceName()
 {
     // TODO: provide implementation here
-    /*
+    
     SusiStatus_t status;
     uint32_t bufLen;
     char* buf = malloc(1024 * sizeof(char));
-
     status = SusiBoardGetStringA(SUSI_ID_BOARD_NAME_STR, buf, &bufLen);
     if (status == SUSI_STATUS_SUCCESS)
     {
@@ -66,9 +65,7 @@ char* Device_Detailed_Information_Property_GetDeviceName()
     {
         LogInfo("DeviceName error code: %lu", status);
     }
-    return buf;*/
-    return "UTX-3117";
-    
+    return buf;
 }
 
 char* Device_Detailed_Information_Property_GetAgentID()
@@ -116,11 +113,11 @@ char* Device_Detailed_Information_Property_GetProduct()
 char* Device_Detailed_Information_Property_GetManufacturer()
 {
     // TODO: provide implementation here
-    /*
+    
     SusiStatus_t status;
     uint32_t bufLen;
     char *buf = malloc(1024 * sizeof(char));
-    
+
     status = SusiBoardGetStringA(SUSI_ID_BOARD_MANUFACTURER_STR, buf, &bufLen);
     if ( status == SUSI_STATUS_SUCCESS)
     {
@@ -130,14 +127,13 @@ char* Device_Detailed_Information_Property_GetManufacturer()
     {
         LogInfo("manufacturer error code: %lu", status);
     }
-    return buf;*/
-    return "Advantech";
+    return buf;
 }
 
 char* Device_Detailed_Information_Property_GetVersion()
 {
     // TODO: provide implementation here
-    return "abc";
+    return "v1.0.0";
 }
 
 char* Device_Detailed_Information_Property_GetPlatform()
@@ -149,7 +145,7 @@ char* Device_Detailed_Information_Property_GetPlatform()
 char* Device_Detailed_Information_Property_GetOperatingSystem()
 {
     // TODO: provide implementation here
-    return "abc";
+    return "Windows 10 Enterprise LTSC";
 }
 
 char* Device_Detailed_Information_Property_GetMAC()
@@ -161,13 +157,13 @@ char* Device_Detailed_Information_Property_GetMAC()
 char* Device_Detailed_Information_Property_GetCPU()
 {
     // TODO: provide implementation here
-    return "abc";
+    return "Intel";
 }
 
 int Device_Detailed_Information_Property_GetMemory()
 {
     // TODO: provide implementation here
-    return 0;
+    return 8388608;
 }
 
 char* Device_Detailed_Information_Property_GetGrafanaFolder()
@@ -184,16 +180,16 @@ char* Device_Detailed_Information_Property_GetGrafanaBoard()
 
 char* Device_Detailed_Information_Property_GetLastConnectedAt()
 {
-	if (gLastConnectedAt == NULL) {
-		time_t rawtime;
-		struct tm* info;
-		char buffer[80];
-		time(&rawtime);
-		info = localtime(&rawtime);
-		strftime(buffer, 80, "%Y-%m-%dT%H:%M:%S", info);
-		gLastConnectedAt = _strdup(buffer);
-	}
-	return gLastConnectedAt;
+    if (gLastConnectedAt == NULL) {
+        time_t rawtime;
+        struct tm* info;
+        char buffer[80];
+        time(&rawtime);
+        info = localtime(&rawtime);
+        strftime(buffer, 80, "%Y-%m-%dT%H:%M:%S", info);
+        gLastConnectedAt = _strdup(buffer);
+    }
+    return gLastConnectedAt;
     // TODO: provide implementation here
 }
 
@@ -201,13 +197,13 @@ double Sensors_Information_Telemetry_ReadVvcore()
 {
     SusiStatus_t vvcore;
     uint32_t buf;
-    
+
     vvcore = SusiBoardGetValue(SUSI_ID_HWM_VOLTAGE_VCORE, &buf);
-    if (vvcore == SUSI_STATUS_SUCCESS) 
+    if (vvcore == SUSI_STATUS_SUCCESS)
     {
         LogInfo("vvore: %lu mV", buf);
     }
-    else 
+    else
     {
         LogInfo("vvcore error code: %lu", vvcore);
     }
@@ -540,11 +536,10 @@ double Sensors_Information_Telemetry_ReadFcpu2()
 char* DeviceInfo_Property_GetManufacturer()
 {
     // TODO: provide implementation here
-    /*
+    
     SusiStatus_t status;
     uint32_t bufLen;
     char* buf = malloc(1024 * sizeof(char));
-
     status = SusiBoardGetStringA(SUSI_ID_BOARD_MANUFACTURER_STR, buf, &bufLen);
     if (status == SUSI_STATUS_SUCCESS)
     {
@@ -552,31 +547,28 @@ char* DeviceInfo_Property_GetManufacturer()
     }
     else
     {
-        LogInfo("vvcore error code: %lu", status);
+        LogInfo("manufacturer error code: %lu", status);
     }
-    return buf;*/
-    return "Advantech";
+    return buf;
 }
 
 char* DeviceInfo_Property_GetModel()
 {
     // TODO: provide implementation here
-    /*
+    
     SusiStatus_t status;
     uint32_t bufLen;
     char* buf = malloc(1024 * sizeof(char));
-
     status = SusiBoardGetStringA(SUSI_ID_BOARD_NAME_STR, buf, &bufLen);
     if (status == SUSI_STATUS_SUCCESS)
     {
-        LogInfo("DeviceName: %s", buf);
+        LogInfo("ModelName: %s", buf);
     }
     else
     {
-        LogInfo("DeviceName error code: %lu", status);
+        LogInfo("ModelName error code: %lu", status);
     }
-    return buf;*/
-    return "UTX-3117";
+    return buf;
 }
 
 char* DeviceInfo_Property_GetSwVersion()
@@ -588,7 +580,7 @@ char* DeviceInfo_Property_GetSwVersion()
 char* DeviceInfo_Property_GetOsName()
 {
     // TODO: provide implementation here
-    return "";
+    return "Windows 10 Enterprise LTSC";
 }
 
 char* DeviceInfo_Property_GetProcessorArchitecture()
@@ -606,13 +598,11 @@ char* DeviceInfo_Property_GetProcessorManufacturer()
 long DeviceInfo_Property_GetTotalStorage()
 {
     // TODO: provide implementation here
-    return 0L;
+    return 33554432;
 }
 
 long DeviceInfo_Property_GetTotalMemory()
 {
     // TODO: provide implementation here
-    return 0L;
+    return 8388608;
 }
-
-
