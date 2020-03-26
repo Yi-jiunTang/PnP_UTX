@@ -28,67 +28,32 @@ extern "C"
 
 typedef enum DEVICE_DETAILED_INFORMATION_READONLY_PROPERTY_TAG
 {
-    Device_Detailed_Information_DEVICENAME_PROPERTY,
-    Device_Detailed_Information_AGENTID_PROPERTY,
-    Device_Detailed_Information_DEVICEGROUPS_PROPERTY,
-    Device_Detailed_Information_WAKEONLAN_PROPERTY,
-    Device_Detailed_Information_CONNECTIONSTATUS_PROPERTY,
-    Device_Detailed_Information_AUTOREPORT_PROPERTY,
-    Device_Detailed_Information_STATUSMESSAGE_PROPERTY,
-    Device_Detailed_Information_PRODUCT_PROPERTY,
-    Device_Detailed_Information_MANUFACTURER_PROPERTY,
-    Device_Detailed_Information_VERSION_PROPERTY,
-    Device_Detailed_Information_PLATFORM_PROPERTY,
-    Device_Detailed_Information_OPERATINGSYSTEM_PROPERTY,
-    Device_Detailed_Information_MAC_PROPERTY,
-    Device_Detailed_Information_CPU_PROPERTY,
-    Device_Detailed_Information_MEMORY_PROPERTY,
-    Device_Detailed_Information_GRAFANAFOLDER_PROPERTY,
-    Device_Detailed_Information_GRAFANABOARD_PROPERTY,
+    Device_Detailed_Information_BIOS_REVISION,
+    Device_Detailed_Information_EC_FW,
+    Device_Detailed_Information_DRIVER_VERSION,
+    Device_Detailed_Information_LIB_VERSION,
+    Device_Detailed_Information_FW_VERSION,
     Device_Detailed_Information_LASTCONNECTEDAT_PROPERTY
 } DEVICE_DETAILED_INFORMATION_PROPERTY;
 
 // DigitalTwin interface name from service perspective.
-static const char Device_Detailed_InformationInterfaceId[] = "urn:Advantech:UTX_3117:DeviceDetailedInformation:1";
+static const char Device_Detailed_InformationInterfaceId[] = "urn:Advantech:ARK_1124:DeviceDetailedInformation:1";
 static const char Device_Detailed_InformationInterfaceInstanceName[] = "Device_Detailed_Information";
 
 // Telemetry names for this interface.
 
 // Property names for this interface.
 
-#define Device_Detailed_InformationInterface_DeviceNameProperty "DeviceName"
 
-#define Device_Detailed_InformationInterface_AgentIDProperty "AgentID"
+#define Device_Detailed_InformationInterface_BiosRevisionProperty "BiosVersion"
 
-#define Device_Detailed_InformationInterface_DeviceGroupsProperty "DeviceGroups"
+#define Device_Detailed_InformationInterface_ECFirmwareProperty "ECFirmware"
 
-#define Device_Detailed_InformationInterface_WakeOnLANProperty "WakeOnLAN"
+#define Device_Detailed_InformationInterface_DriverVersionProperty "DriverVersion"
 
-#define Device_Detailed_InformationInterface_ConnectionStatusProperty "ConnectionStatus"
+#define Device_Detailed_InformationInterface_LibraryVersionProperty "LibraryVersion"
 
-#define Device_Detailed_InformationInterface_AutoReportProperty "AutoReport"
-
-#define Device_Detailed_InformationInterface_StatusMessageProperty "StatusMessage"
-
-#define Device_Detailed_InformationInterface_ProductProperty "Product"
-
-#define Device_Detailed_InformationInterface_ManufacturerProperty "Manufacturer"
-
-#define Device_Detailed_InformationInterface_VersionProperty "Version"
-
-#define Device_Detailed_InformationInterface_PlatformProperty "Platform"
-
-#define Device_Detailed_InformationInterface_OperatingSystemProperty "OperatingSystem"
-
-#define Device_Detailed_InformationInterface_MACProperty "MAC"
-
-#define Device_Detailed_InformationInterface_CPUProperty "CPU"
-
-#define Device_Detailed_InformationInterface_MemoryProperty "Memory"
-
-#define Device_Detailed_InformationInterface_GrafanaFolderProperty "GrafanaFolder"
-
-#define Device_Detailed_InformationInterface_GrafanaBoardProperty "GrafanaBoard"
+#define Device_Detailed_InformationInterface_FirmwareVersionProperty "FirmwareVersion"
 
 #define Device_Detailed_InformationInterface_LastConnectedAtProperty "LastConnectedAt"
 
@@ -101,39 +66,15 @@ void Device_Detailed_InformationInterface_Close(DIGITALTWIN_INTERFACE_CLIENT_HAN
 
 DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportAll();
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDeviceName();
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportBiosVersion();
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportAgentID();
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportECFirmware();
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDeviceGroups();
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDriverVersion();
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportWakeOnLAN();
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportLibraryVersion();
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportConnectionStatus();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportAutoReport();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportStatusMessage();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportProduct();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportManufacturer();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportVersion();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportPlatform();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportOperatingSystem();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportMAC();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportCPU();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportMemory();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportGrafanaFolder();
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportGrafanaBoard();
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportFirmwareVersion();
 
 DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportLastConnectedAt();
 

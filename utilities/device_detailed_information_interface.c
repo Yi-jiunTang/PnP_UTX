@@ -61,7 +61,7 @@ DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_ReportProperty_In
     return result;
 }
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDeviceName()
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportBiosVersion()
 {
     if (appState.interfaceClientHandle == NULL)
     {
@@ -69,18 +69,18 @@ DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDe
     }
 
     char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeDeviceNameProperty(payloadBuffer, MAX_MASSAGE_SIZE))
+    if (Device_Detailed_Information_SerializeBiosVersionProperty(payloadBuffer, MAX_MASSAGE_SIZE))
     {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_DeviceNameProperty, payloadBuffer);
+        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_BiosRevisionProperty, payloadBuffer);
     }
     else
     {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property DeviceName failed");
+        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property BiosVersion failed");
         return DIGITALTWIN_CLIENT_ERROR;
     }
 }
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportAgentID()
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportECFirmware()
 {
     if (appState.interfaceClientHandle == NULL)
     {
@@ -88,18 +88,18 @@ DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportAg
     }
 
     char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeAgentIDProperty(payloadBuffer, MAX_MASSAGE_SIZE))
+    if (Device_Detailed_Information_SerializeECFirmwareProperty(payloadBuffer, MAX_MASSAGE_SIZE))
     {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_AgentIDProperty, payloadBuffer);
+        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_ECFirmwareProperty, payloadBuffer);
     }
     else
     {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property AgentID failed");
+        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property ECFirmware failed");
         return DIGITALTWIN_CLIENT_ERROR;
     }
 }
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDeviceGroups()
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDriverVersion()
 {
     if (appState.interfaceClientHandle == NULL)
     {
@@ -107,18 +107,18 @@ DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportDe
     }
 
     char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeDeviceGroupsProperty(payloadBuffer, MAX_MASSAGE_SIZE))
+    if (Device_Detailed_Information_SerializeDriverVersionProperty(payloadBuffer, MAX_MASSAGE_SIZE))
     {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_DeviceGroupsProperty, payloadBuffer);
+        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_DriverVersionProperty, payloadBuffer);
     }
     else
     {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property DeviceGroups failed");
+        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property DriverVersion failed");
         return DIGITALTWIN_CLIENT_ERROR;
     }
 }
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportWakeOnLAN()
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportLibraryVersion()
 {
     if (appState.interfaceClientHandle == NULL)
     {
@@ -126,18 +126,18 @@ DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportWa
     }
 
     char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeWakeOnLANProperty(payloadBuffer, MAX_MASSAGE_SIZE))
+    if (Device_Detailed_Information_SerializeLibraryVersionProperty(payloadBuffer, MAX_MASSAGE_SIZE))
     {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_WakeOnLANProperty, payloadBuffer);
+        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_LibraryVersionProperty, payloadBuffer);
     }
     else
     {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property WakeOnLAN failed");
+        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property LibraryVersion failed");
         return DIGITALTWIN_CLIENT_ERROR;
     }
 }
 
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportConnectionStatus()
+DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportFirmwareVersion()
 {
     if (appState.interfaceClientHandle == NULL)
     {
@@ -145,241 +145,13 @@ DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportCo
     }
 
     char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeConnectionStatusProperty(payloadBuffer, MAX_MASSAGE_SIZE))
+    if (Device_Detailed_Information_SerializeFirmwareVersionProperty(payloadBuffer, MAX_MASSAGE_SIZE))
     {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_ConnectionStatusProperty, payloadBuffer);
+        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_FirmwareVersionProperty, payloadBuffer);
     }
     else
     {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property ConnectionStatus failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportAutoReport()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeAutoReportProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_AutoReportProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property AutoReport failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportStatusMessage()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeStatusMessageProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_StatusMessageProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property StatusMessage failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportProduct()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeProductProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_ProductProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property Product failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportManufacturer()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeManufacturerProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_ManufacturerProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property Manufacturer failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportVersion()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeVersionProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_VersionProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property Version failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportPlatform()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializePlatformProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_PlatformProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property Platform failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportOperatingSystem()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeOperatingSystemProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_OperatingSystemProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property OperatingSystem failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportMAC()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeMACProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_MACProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property MAC failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportCPU()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeCPUProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_CPUProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property CPU failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportMemory()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeMemoryProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_MemoryProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property Memory failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportGrafanaFolder()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeGrafanaFolderProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_GrafanaFolderProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property GrafanaFolder failed");
-        return DIGITALTWIN_CLIENT_ERROR;
-    }
-}
-
-DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportGrafanaBoard()
-{
-    if (appState.interfaceClientHandle == NULL)
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: interfaceClientHandle is required to be initialized before reporting properties");
-    }
-
-    char payloadBuffer[MAX_MASSAGE_SIZE];
-    if (Device_Detailed_Information_SerializeGrafanaBoardProperty(payloadBuffer, MAX_MASSAGE_SIZE))
-    {
-        return Device_Detailed_InformationInterface_ReportProperty_Internal(appState.interfaceClientHandle, Device_Detailed_InformationInterface_GrafanaBoardProperty, payloadBuffer);
-    }
-    else
-    {
-        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property GrafanaBoard failed");
+        LogError("DEVICE_DETAILED_INFORMATION_INTERFACE: serialize read only property FirmwareVersion failed");
         return DIGITALTWIN_CLIENT_ERROR;
     }
 }
@@ -409,23 +181,11 @@ DIGITALTWIN_CLIENT_RESULT Device_Detailed_InformationInterface_Property_ReportAl
 
     // NOTE: Future versions of SDK will support ability to send multiple properties in a single
     // send.  For now, one at a time is sufficient albeit less efficient.
-    if (((result = Device_Detailed_InformationInterface_Property_ReportDeviceName()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportAgentID()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportDeviceGroups()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportWakeOnLAN()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportConnectionStatus()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportAutoReport()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportStatusMessage()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportProduct()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportManufacturer()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportVersion()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportPlatform()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportOperatingSystem()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportMAC()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportCPU()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportMemory()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportGrafanaFolder()) != DIGITALTWIN_CLIENT_OK) ||
-        ((result = Device_Detailed_InformationInterface_Property_ReportGrafanaBoard()) != DIGITALTWIN_CLIENT_OK) ||
+    if (((result = Device_Detailed_InformationInterface_Property_ReportBiosVersion()) != DIGITALTWIN_CLIENT_OK) ||
+        ((result = Device_Detailed_InformationInterface_Property_ReportECFirmware()) != DIGITALTWIN_CLIENT_OK) ||
+        ((result = Device_Detailed_InformationInterface_Property_ReportDriverVersion()) != DIGITALTWIN_CLIENT_OK) ||
+        ((result = Device_Detailed_InformationInterface_Property_ReportLibraryVersion()) != DIGITALTWIN_CLIENT_OK) ||
+        ((result = Device_Detailed_InformationInterface_Property_ReportFirmwareVersion()) != DIGITALTWIN_CLIENT_OK) ||
         ((result = Device_Detailed_InformationInterface_Property_ReportLastConnectedAt()) != DIGITALTWIN_CLIENT_OK) )
 
     {

@@ -5,8 +5,8 @@
  * Generated Date: 2019年10月2日
  ***********************************************************************************************/
 
-#ifndef UTX_3117_IMPL
-#define UTX_3117_IMPL
+#ifndef UTX_3117_impl
+#define UTX_3117_impl
 
 #ifdef __cplusplus
 extern "C"
@@ -72,40 +72,15 @@ double Sensors_Information_Telemetry_ReadFcpu2();
 /**
 * Device properties related methods.
 */
+char* Device_Detailed_Information_Property_GetBiosVersion();
 
-char* Device_Detailed_Information_Property_GetDeviceName();
+char* Device_Detailed_Information_Property_GetECFirmware();
 
-char* Device_Detailed_Information_Property_GetAgentID();
+char* Device_Detailed_Information_Property_GetDriverVersion();
 
-char* Device_Detailed_Information_Property_GetDeviceGroups();
+char* Device_Detailed_Information_Property_GetLibraryVersion();
 
-char* Device_Detailed_Information_Property_GetWakeOnLAN();
-
-char* Device_Detailed_Information_Property_GetConnectionStatus();
-
-char* Device_Detailed_Information_Property_GetAutoReport();
-
-char* Device_Detailed_Information_Property_GetStatusMessage();
-
-char* Device_Detailed_Information_Property_GetProduct();
-
-char* Device_Detailed_Information_Property_GetManufacturer();
-
-char* Device_Detailed_Information_Property_GetVersion();
-
-char* Device_Detailed_Information_Property_GetPlatform();
-
-char* Device_Detailed_Information_Property_GetOperatingSystem();
-
-char* Device_Detailed_Information_Property_GetMAC();
-
-char* Device_Detailed_Information_Property_GetCPU();
-
-int Device_Detailed_Information_Property_GetMemory();
-
-char* Device_Detailed_Information_Property_GetGrafanaFolder();
-
-char* Device_Detailed_Information_Property_GetGrafanaBoard();
+char* Device_Detailed_Information_Property_GetFirmwareVersion();
 
 char* Device_Detailed_Information_Property_GetLastConnectedAt();
 
@@ -141,4 +116,4 @@ void ReportProperty_Error_Callback(const char* interfaceName, const char* proper
 }
 #endif
 
-#endif // UTX_3117_IMPL
+#endif // UTX_3117_impl

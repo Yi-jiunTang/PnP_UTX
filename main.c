@@ -37,13 +37,13 @@ const IOTHUB_SECURITY_TYPE secureDeviceTypeForIotHub = IOTHUB_SECURITY_TYPE_SYMM
 static const char *globalDpsEndpoint = "global.azure-devices-provisioning.net";
 
 // TODO: Specify DPS scope ID if you intend on using DPS / IoT Central.
-static const char *dpsIdScope = "0ne00097B3F";
+static const char *dpsIdScope = "0ne0006E3BA";
 
 // TODO: Specify symmetric keys if you intend on using DPS / IoT Central and symmetric key based auth.
-static const char *sasKey = "r8JgBNSvHfe4WH/8yZXPqp5RI3OO7Prpkcz4eo85MUo=";
+static const char *sasKey = "lzH5ul5nT7GpwQevuvGlfrA0083k9ReFWBTlrEd1tbU=";
 
 // TODO: specify your device registration ID
-static const char *registrationId = "myutx";
+static const char *registrationId = "3def6d29-10c3-40bf-9db2-664b5da2cdb7";
 
 // TODO: Fill in DIGITALTWIN_DEVICE_CAPABILITY_MODEL_INLINE_DATA if want to make deivce self-describing.
 #define DIGITALTWIN_DEVICE_CAPABILITY_MODEL_INLINE_DATA "{}"
@@ -51,7 +51,7 @@ static const char *registrationId = "myutx";
 static const char *digitalTwinSample_CustomProvisioningData = "{"
                                                               "\"__iot:interfaces\":"
                                                               "{"
-                                                              "\"CapabilityModelId\": \"urn:Advantech:UTX_3117:1\" ,"
+                                                              "\"CapabilityModelId\": \"urn:Advantech:ARK_1124:1\" ,"
                                                               "\"CapabilityModel\": \"" DIGITALTWIN_DEVICE_CAPABILITY_MODEL_INLINE_DATA "\""
                                                               "}"
                                                               "}";

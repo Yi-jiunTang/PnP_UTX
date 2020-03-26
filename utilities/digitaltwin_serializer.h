@@ -21,39 +21,15 @@ extern "C"
 {
 #endif
 
-bool Device_Detailed_Information_SerializeDeviceNameProperty(char * payloadBuffer, int size);
+bool Device_Detailed_Information_SerializeBiosVersionProperty(char* payloadBuffer, int size);
 
-bool Device_Detailed_Information_SerializeAgentIDProperty(char * payloadBuffer, int size);
+bool Device_Detailed_Information_SerializeECFirmwareProperty(char* payloadBuffer, int size);
 
-bool Device_Detailed_Information_SerializeDeviceGroupsProperty(char * payloadBuffer, int size);
+bool Device_Detailed_Information_SerializeDriverVersionProperty(char * payloadBuffer, int size);
 
-bool Device_Detailed_Information_SerializeWakeOnLANProperty(char * payloadBuffer, int size);
+bool Device_Detailed_Information_SerializeLibraryVersionProperty(char * payloadBuffer, int size);
 
-bool Device_Detailed_Information_SerializeConnectionStatusProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeAutoReportProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeStatusMessageProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeProductProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeManufacturerProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeVersionProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializePlatformProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeOperatingSystemProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeMACProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeCPUProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeMemoryProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeGrafanaFolderProperty(char * payloadBuffer, int size);
-
-bool Device_Detailed_Information_SerializeGrafanaBoardProperty(char * payloadBuffer, int size);
+bool Device_Detailed_Information_SerializeFirmwareVersionProperty(char * payloadBuffer, int size);
 
 bool Device_Detailed_Information_SerializeLastConnectedAtProperty(char * payloadBuffer, int size);
 

@@ -534,8 +534,8 @@ bool Sensors_Information_SerializeFcpu2Telemetry(char* payloadBuffer, int size)
 //
 // Serialize read-only property
 //
-
-bool Device_Detailed_Information_SerializeDeviceNameProperty(char * payloadBuffer, int size)
+// Device_Detailed_information
+bool Device_Detailed_Information_SerializeBiosVersionProperty(char* payloadBuffer, int size)
 {
     if (payloadBuffer == NULL)
     {
@@ -544,25 +544,25 @@ bool Device_Detailed_Information_SerializeDeviceNameProperty(char * payloadBuffe
 
     memset(payloadBuffer, 0, size);
 
-    char* deviceName = Device_Detailed_Information_Property_GetDeviceName();
+    char* biosVersion = Device_Detailed_Information_Property_GetBiosVersion();
 
-    int neededSize = snprintf(NULL, 0, "\"%s\"", deviceName);
+    int neededSize = snprintf(NULL, 0, "\"%s\"", biosVersion);
 
     if (neededSize > size - 1)
     {
-        LogError("Failed to build DeviceName payload string");
+        LogError("Failed to build BiosVersion payload string");
         return false;
     }
     else
     {
-        snprintf(payloadBuffer, size, "\"%s\"", deviceName);
+        snprintf(payloadBuffer, size, "\"%s\"", biosVersion);
     }
 
-    free(deviceName);
+    free(biosVersion);
     return true;
 }
 
-bool Device_Detailed_Information_SerializeAgentIDProperty(char * payloadBuffer, int size)
+bool Device_Detailed_Information_SerializeECFirmwareProperty(char* payloadBuffer, int size)
 {
     if (payloadBuffer == NULL)
     {
@@ -571,24 +571,25 @@ bool Device_Detailed_Information_SerializeAgentIDProperty(char * payloadBuffer, 
 
     memset(payloadBuffer, 0, size);
 
-    char* agentID = Device_Detailed_Information_Property_GetAgentID();
+    char* eCFirmware = Device_Detailed_Information_Property_GetECFirmware();
 
-    int neededSize = snprintf(NULL, 0, "\"%s\"", agentID);
+    int neededSize = snprintf(NULL, 0, "\"%s\"", eCFirmware);
 
     if (neededSize > size - 1)
     {
-        LogError("Failed to build AgentID payload string");
-        return false;
+        LogError("Failed to build ECFirmware payload string");
+        //return false;
     }
     else
     {
-        snprintf(payloadBuffer, size, "\"%s\"", agentID);
+        snprintf(payloadBuffer, size, "\"%s\"", eCFirmware);
     }
 
+    free(eCFirmware);
     return true;
 }
 
-bool Device_Detailed_Information_SerializeDeviceGroupsProperty(char * payloadBuffer, int size)
+bool Device_Detailed_Information_SerializeDriverVersionProperty(char * payloadBuffer, int size)
 {
     if (payloadBuffer == NULL)
     {
@@ -597,24 +598,25 @@ bool Device_Detailed_Information_SerializeDeviceGroupsProperty(char * payloadBuf
 
     memset(payloadBuffer, 0, size);
 
-    char* deviceGroups = Device_Detailed_Information_Property_GetDeviceGroups();
+    char* driverVersion = Device_Detailed_Information_Property_GetDriverVersion();
 
-    int neededSize = snprintf(NULL, 0, "\"%s\"", deviceGroups);
+    int neededSize = snprintf(NULL, 0, "\"%s\"", driverVersion);
 
     if (neededSize > size - 1)
     {
-        LogError("Failed to build DeviceGroups payload string");
-        return false;
+        LogError("Failed to build DriverVersion payload string");
+        //return false;
     }
     else
     {
-        snprintf(payloadBuffer, size, "\"%s\"", deviceGroups);
+        snprintf(payloadBuffer, size, "\"%s\"", driverVersion);
     }
 
+    free(driverVersion);
     return true;
 }
 
-bool Device_Detailed_Information_SerializeWakeOnLANProperty(char * payloadBuffer, int size)
+bool Device_Detailed_Information_SerializeLibraryVersionProperty(char * payloadBuffer, int size)
 {
     if (payloadBuffer == NULL)
     {
@@ -623,24 +625,25 @@ bool Device_Detailed_Information_SerializeWakeOnLANProperty(char * payloadBuffer
 
     memset(payloadBuffer, 0, size);
 
-    char* wakeOnLAN = Device_Detailed_Information_Property_GetWakeOnLAN();
+    char* libraryVersion = Device_Detailed_Information_Property_GetLibraryVersion();
 
-    int neededSize = snprintf(NULL, 0, "\"%s\"", wakeOnLAN);
+    int neededSize = snprintf(NULL, 0, "\"%s\"", libraryVersion);
 
     if (neededSize > size - 1)
     {
-        LogError("Failed to build WakeOnLAN payload string");
-        return false;
+        LogError("Failed to build LibraryVersion payload string");
+        //return false;
     }
     else
     {
-        snprintf(payloadBuffer, size, "\"%s\"", wakeOnLAN);
+        snprintf(payloadBuffer, size, "\"%s\"", libraryVersion);
     }
 
+    free(libraryVersion);
     return true;
 }
 
-bool Device_Detailed_Information_SerializeConnectionStatusProperty(char * payloadBuffer, int size)
+bool Device_Detailed_Information_SerializeFirmwareVersionProperty(char * payloadBuffer, int size)
 {
     if (payloadBuffer == NULL)
     {
@@ -649,333 +652,21 @@ bool Device_Detailed_Information_SerializeConnectionStatusProperty(char * payloa
 
     memset(payloadBuffer, 0, size);
 
-    char* connectionStatus = Device_Detailed_Information_Property_GetConnectionStatus();
+    char* firmwareVersion = Device_Detailed_Information_Property_GetFirmwareVersion();
 
-    int neededSize = snprintf(NULL, 0, "\"%s\"", connectionStatus);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build ConnectionStatus payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", connectionStatus);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeAutoReportProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* autoReport = Device_Detailed_Information_Property_GetAutoReport();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", autoReport);
+    int neededSize = snprintf(NULL, 0, "\"%s\"", firmwareVersion);
 
     if (neededSize > size - 1)
     {
-        LogError("Failed to build AutoReport payload string");
-        return false;
+        LogError("Failed to build FirmwareVersion payload string");
+        //return false;
     }
     else
     {
-        snprintf(payloadBuffer, size, "\"%s\"", autoReport);
+        snprintf(payloadBuffer, size, "\"%s\"", firmwareVersion);
     }
 
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeStatusMessageProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* statusMessage = Device_Detailed_Information_Property_GetStatusMessage();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", statusMessage);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build StatusMessage payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", statusMessage);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeProductProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* product = Device_Detailed_Information_Property_GetProduct();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", product);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build Product payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", product);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeManufacturerProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* manufacturer = Device_Detailed_Information_Property_GetManufacturer();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", manufacturer);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build Manufacturer payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", manufacturer);
-    }
-
-    free(manufacturer);
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeVersionProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* version = Device_Detailed_Information_Property_GetVersion();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", version);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build Version payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", version);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializePlatformProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* platform = Device_Detailed_Information_Property_GetPlatform();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", platform);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build Platform payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", platform);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeOperatingSystemProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* operatingSystem = Device_Detailed_Information_Property_GetOperatingSystem();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", operatingSystem);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build OperatingSystem payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", operatingSystem);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeMACProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* mAC = Device_Detailed_Information_Property_GetMAC();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", mAC);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build MAC payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", mAC);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeCPUProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* cPU = Device_Detailed_Information_Property_GetCPU();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", cPU);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build CPU payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", cPU);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeMemoryProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    int memory = Device_Detailed_Information_Property_GetMemory();
-
-    int neededSize = snprintf(NULL, 0, "%d", memory);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build Memory payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "%d", memory);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeGrafanaFolderProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* grafanaFolder = Device_Detailed_Information_Property_GetGrafanaFolder();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", grafanaFolder);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build GrafanaFolder payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", grafanaFolder);
-    }
-
-    return true;
-}
-
-bool Device_Detailed_Information_SerializeGrafanaBoardProperty(char * payloadBuffer, int size)
-{
-    if (payloadBuffer == NULL)
-    {
-        return false;
-    }
-
-    memset(payloadBuffer, 0, size);
-
-    char* grafanaBoard = Device_Detailed_Information_Property_GetGrafanaBoard();
-
-    int neededSize = snprintf(NULL, 0, "\"%s\"", grafanaBoard);
-
-    if (neededSize > size - 1)
-    {
-        LogError("Failed to build GrafanaBoard payload string");
-        return false;
-    }
-    else
-    {
-        snprintf(payloadBuffer, size, "\"%s\"", grafanaBoard);
-    }
-
+    free(firmwareVersion);
     return true;
 }
 
@@ -1005,6 +696,7 @@ bool Device_Detailed_Information_SerializeLastConnectedAtProperty(char * payload
     return true;
 }
 
+//DeviceInfo
 bool DeviceInfo_SerializeManufacturerProperty(char * payloadBuffer, int size)
 {
     if (payloadBuffer == NULL)

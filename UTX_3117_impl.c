@@ -49,133 +49,112 @@ void ReportProperty_Error_Callback(const char* interfaceName, const char* proper
     LogInfo("DigitalTwin failed to report writable property for %s::%s", interfaceName, propertyName);
 }
 
-char* Device_Detailed_Information_Property_GetDeviceName()
+char* Device_Detailed_Information_Property_GetBiosVersion()
 {
     // TODO: provide implementation here
-    
-    SusiStatus_t status;
+
+    SusiStatus_t biosVersion;
     uint32_t bufLen;
     char* buf = malloc(1024 * sizeof(char));
-    status = SusiBoardGetStringA(SUSI_ID_BOARD_NAME_STR, buf, &bufLen);
-    if (status == SUSI_STATUS_SUCCESS)
+    biosVersion = SusiBoardGetStringA(SUSI_ID_BOARD_BIOS_REVISION_STR, buf, &bufLen);
+    if (biosVersion == SUSI_STATUS_SUCCESS)
     {
-        LogInfo("DeviceName: %s", buf);
+        LogInfo("BiosVersion: %s", buf);
     }
     else
     {
-        LogInfo("DeviceName error code: %lu", status);
+        LogInfo("BiosVersion error code: %lu", biosVersion);
+        sprintf(buf, "NULL");
+        buf[strlen(buf)] = '\0';
     }
     return buf;
 }
 
-char* Device_Detailed_Information_Property_GetAgentID()
+char* Device_Detailed_Information_Property_GetECFirmware()
 {
     // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetDeviceGroups()
-{
-    // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetWakeOnLAN()
-{
-    // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetConnectionStatus()
-{
-    // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetAutoReport()
-{
-    // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetStatusMessage()
-{
-    // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetProduct()
-{
-    // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetManufacturer()
-{
-    // TODO: provide implementation here
-    
-    SusiStatus_t status;
+    SusiStatus_t ecFW;
     uint32_t bufLen;
-    char *buf = malloc(1024 * sizeof(char));
-
-    status = SusiBoardGetStringA(SUSI_ID_BOARD_MANUFACTURER_STR, buf, &bufLen);
-    if ( status == SUSI_STATUS_SUCCESS)
+    char* buf = malloc(1024 * sizeof(char));
+    ecFW = SusiBoardGetStringA(SUSI_ID_BOARD_EC_FW_STR, buf, &bufLen);
+    if (ecFW == SUSI_STATUS_SUCCESS)
     {
-        LogInfo("manufacturer: %s", buf);
+        LogInfo("ECFirmware: %s", buf);
     }
     else
     {
-        LogInfo("manufacturer error code: %lu", status);
+        LogInfo("ECFirmware error code: %lu", ecFW);
+        sprintf(buf, "NULL");
+        buf[strlen(buf)] = '\0';
     }
     return buf;
 }
 
-char* Device_Detailed_Information_Property_GetVersion()
+char* Device_Detailed_Information_Property_GetDriverVersion()
 {
-    // TODO: provide implementation here
-    return "v1.0.0";
+    SusiStatus_t driverVersion;
+    uint32_t buf;
+    char* buffer = malloc(1024 * sizeof(char));
+
+    driverVersion = SusiBoardGetValue(SUSI_ID_BOARD_DRIVER_VERSION_VAL, &buf);
+    if (driverVersion == SUSI_STATUS_SUCCESS)
+    {
+        LogInfo("driverVersion: %u.%u.%u", (buf >> 24), ((buf >> 16) & 0xFF), (buf & 0xFFFF));
+        sprintf(buffer, "%u.%u.%u", (buf >> 24), ((buf >> 16) & 0xFF), (buf & 0xFFFF));
+        buffer[strlen(buffer)] = '\0';
+    }
+    else
+    {
+        LogInfo("driverVersion error code: %lu", driverVersion);
+        sprintf(buffer, "NULL");
+        buffer[strlen(buffer)] = '\0';
+    }
+    return buffer;
 }
 
-char* Device_Detailed_Information_Property_GetPlatform()
+char* Device_Detailed_Information_Property_GetLibraryVersion()
 {
-    // TODO: provide implementation here
-    return "abc";
+    SusiStatus_t libVersion;
+    uint32_t buf;
+    char* buffer = malloc(1024 * sizeof(char));
+
+    libVersion = SusiBoardGetValue(SUSI_ID_BOARD_LIB_VERSION_VAL, &buf);
+    if (libVersion == SUSI_STATUS_SUCCESS)
+    {
+        LogInfo("libVersion: %u.%u.%u", (buf >> 24), ((buf >> 16) & 0xFF), (buf & 0xFFFF));
+        sprintf(buffer, "%u.%u.%u", (buf >> 24), ((buf >> 16) & 0xFF), (buf & 0xFFFF));
+        buffer[strlen(buffer)] = '\0';
+    }
+    else
+    {
+        LogInfo("libVersion error code: %lu", libVersion);
+        sprintf(buffer, "NULL");
+        buffer[strlen(buffer)] = '\0';
+    }
+    return buffer;
 }
 
-char* Device_Detailed_Information_Property_GetOperatingSystem()
-{
-    // TODO: provide implementation here
-    return "Windows 10 Enterprise LTSC";
-}
 
-char* Device_Detailed_Information_Property_GetMAC()
+char* Device_Detailed_Information_Property_GetFirmwareVersion()
 {
-    // TODO: provide implementation here
-    return "abc";
-}
+    SusiStatus_t fwVersion;
+    uint32_t buf;
+    char* buffer = malloc(1024 * sizeof(char));
 
-char* Device_Detailed_Information_Property_GetCPU()
-{
-    // TODO: provide implementation here
-    return "Intel";
-}
-
-int Device_Detailed_Information_Property_GetMemory()
-{
-    // TODO: provide implementation here
-    return 8388608;
-}
-
-char* Device_Detailed_Information_Property_GetGrafanaFolder()
-{
-    // TODO: provide implementation here
-    return "abc";
-}
-
-char* Device_Detailed_Information_Property_GetGrafanaBoard()
-{
-    // TODO: provide implementation here
-    return "abc";
+    fwVersion = SusiBoardGetValue(SUSI_ID_BOARD_FIRMWARE_VERSION_VAL, &buf);
+    if (fwVersion == SUSI_STATUS_SUCCESS)
+    {
+        LogInfo("fwVersion: %u.%u.%u", (buf >> 24), ((buf >> 16) & 0xFF), (buf & 0xFFFF));
+        sprintf(buffer, "%u.%u.%u", (buf >> 24), ((buf >> 16) & 0xFF), (buf & 0xFFFF));
+        buffer[strlen(buffer)] = '\0';
+    }
+    else
+    {
+        LogInfo("fwVersion error code: %lu", fwVersion);
+        sprintf(buffer, "NULL");
+        buffer[strlen(buffer)] = '\0';
+    }
+    return buffer;
 }
 
 char* Device_Detailed_Information_Property_GetLastConnectedAt()
